@@ -4,6 +4,9 @@ title: Feature Changelog
 permalink: Changelog/
 ---
 
+## v4.2.2
+**Fix:** Error notification after continuous recordings.
+
 ## v4.2.1
 **Fix**: Crash when Snap to Window is clicked without dragging.
 It now Snaps to the window below.
