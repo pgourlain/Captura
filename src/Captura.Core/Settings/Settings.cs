@@ -296,5 +296,35 @@ namespace Captura
             get => Get<Color>();
             set => Set(value);
         }
+
+
+        [UserScopedSetting]
+        [DefaultSettingValue("63,255,255,255")]
+        public Color DrawingBackgroundColor
+        {
+            get
+            {
+                var result = Get<Color>();
+                return result;
+            }
+            set
+            {
+                //if background is transparent drawing window can't capture mouse events...
+                if (value.A == 0)
+                {
+                    value = Color.FromArgb(1, value);
+                }
+                Set(value);
+            }
+        }
+
+        
+        [UserScopedSetting]
+        [DefaultSettingValue("Red")]
+        public Color DrawingArrowColor
+        {
+            get => Get<Color>();
+            set => Set(value);
+        }
     }
 }

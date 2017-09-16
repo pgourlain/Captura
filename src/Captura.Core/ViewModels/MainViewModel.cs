@@ -14,6 +14,7 @@ using System.Timers;
 using DesktopDuplication;
 using Timer = System.Timers.Timer;
 using Window = Screna.Window;
+using System.Collections.Generic;
 
 namespace Captura.ViewModels
 {
@@ -71,6 +72,7 @@ namespace Captura.ViewModels
             });
             
             PauseCommand = new DelegateCommand(OnPauseExecute, false);
+            DrawCommand = new DelegateCommand(() => DrawOnScreen());
             #endregion
         }
 
@@ -231,6 +233,7 @@ namespace Captura.ViewModels
             ServiceProvider.Register<Action>(ServiceName.ScreenShot, () => ScreenShotCommand.ExecuteIfCan());
             ServiceProvider.Register<Action>(ServiceName.ActiveScreenShot, () => SaveScreenShot(ScreenShotWindow(Window.ForegroundWindow)));
             ServiceProvider.Register<Action>(ServiceName.DesktopScreenShot, () => SaveScreenShot(ScreenShotWindow(Window.DesktopWindow)));
+            ServiceProvider.Register<Action>(ServiceName.Draw, () => DrawCommand.ExecuteIfCan());
 
             // Register Hotkeys if not console
             if (_hotkeys)
@@ -356,6 +359,12 @@ namespace Captura.ViewModels
                 }
                 else return bmp.Transform(true);
             }
+        }
+
+        private void DrawOnScreen()
+        {
+            //Show a window over Desktop
+            ServiceProvider.DrawingWindow.Show();
         }
 
         public async void CaptureScreenShot(string FileName = null)
@@ -570,11 +579,11 @@ namespace Captura.ViewModels
 
             if (imageProvider == null)
                 return null;
-                        
+
             // Mouse Click overlay should be drawn below cursor.
             if (MouseKeyHookAvailable && (Settings.Instance.MouseClicks || Settings.Instance.KeyStrokes))
                 return new OverlayedImageProvider(imageProvider, transform, new MouseKeyHook(Settings.Instance.MouseClicks, Settings.Instance.KeyStrokes));
-            
+
             return imageProvider;
         }
         

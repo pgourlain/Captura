@@ -110,6 +110,7 @@
     </ApplicationDefinition>
     <Compile Include="Models\CmdOptions.cs" />
     <Compile Include="Models\Dpi.cs" />
+    <Compile Include="Models\DrawingWindowProvider.cs" />
     <Compile Include="Models\MainWindowProvider.cs" />
     <Compile Include="Models\MessageProvider.cs" />
     <Compile Include="Models\SystemTray.cs" />
@@ -129,6 +130,9 @@
     <Compile Include="Presentation\ValueConverters\OneWayConverter.cs" />
     <Compile Include="Models\ProxiedDownloader.cs" />
     <Compile Include="ViewModels\AudioEditorViewModel.cs" />
+    <Compile Include="Views\DrawingWindow.xaml.cs">
+      <DependentUpon>DrawingWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\FFMpegDownloader.xaml.cs">
       <DependentUpon>FFMpegDownloader.xaml</DependentUpon>
     </Compile>
@@ -216,6 +220,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AudioEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DrawingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

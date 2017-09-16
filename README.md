@@ -26,6 +26,7 @@ choco install captura -y
 - Mix Audio recorded from Microphone and Speaker Output
 - Capture from WebCam.
 - Can be used from [Command-line](https://github.com/MathewSachin/Captura/wiki/Command-line).
+- Drawing over desktop (arrow and text), useful while recording [ScreenShots](https://github.com/pgourlain/Captura/wiki/ScreenShots/)
 
 # Build Notes
 - [Visual Studio 2017](https://visualstudio.com) or greater is recommended. Can also be built using Visual Studio 2015 using [Microsoft.Net.Compilers](https://www.nuget.org/packages/Microsoft.Net.Compilers) nuget package to support compilation of C# 7.

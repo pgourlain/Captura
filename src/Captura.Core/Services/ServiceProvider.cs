@@ -46,6 +46,9 @@ namespace Captura
                 case ServiceName.DesktopScreenShot:
                     return nameof(Resources.ScreenShotDesktop);
 
+                case ServiceName.Draw:
+                    return nameof(Resources.Draw);
+
                 default:
                     return "Unknown";
             }
@@ -94,6 +97,8 @@ namespace Captura
         public static IWebCamProvider WebCamProvider { get; set; }
 
         public static IMainWindow MainWindow { get; set; }
+
+        public static IDrawingWindow DrawingWindow { get; set; }
                 
         public static bool FileExists(string FileName)
         {
