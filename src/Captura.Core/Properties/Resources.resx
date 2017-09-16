@@ -519,4 +519,7 @@
   <data name="Opacity" xml:space="preserve">
     <value>Opacity</value>
   </data>
+  <data name="Draw" xml:space="preserve">
+    <value>Draw over recording</value>
+  </data>
 </root>

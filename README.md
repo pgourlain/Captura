@@ -24,6 +24,7 @@ See the [Wiki](https://github.com/MathewSachin/Captura/wiki) for more informatio
 - Mix Audio recorded from Microphone and Speaker Output
 - Capture from WebCam.
 - Can be used from [Command-line](https://github.com/MathewSachin/Captura/wiki/Command-line).
+- Drawing over desktop (arrow and text), useful while recording [ScreenShots](https://github.com/pgourlain/Captura/wiki/ScreenShots/)
 
 ## Available on Chocolatey
 ```

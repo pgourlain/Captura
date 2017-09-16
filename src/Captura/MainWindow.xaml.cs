@@ -37,6 +37,7 @@ namespace Captura
             InitializeComponent();
 
             ServiceProvider.MainWindow = new MainWindowProvider(this);
+            ServiceProvider.DrawingWindow = new DrawingWindowProvider(this);
 
             if (App.CmdOptions.Tray)
                 Hide();

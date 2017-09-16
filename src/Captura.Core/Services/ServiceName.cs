@@ -25,6 +25,11 @@
         /// <summary>
         /// ScreenShot of Active Window (Action).
         /// </summary>
-        ActiveScreenShot
+        ActiveScreenShot,
+
+        /// <summary>
+        /// Enable drawing while recording (Action)
+        /// </summary>
+        Draw,
     }
 }

@@ -304,6 +304,15 @@ namespace Captura.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Draw over recording.
+        /// </summary>
+        public static string Draw {
+            get {
+                return ResourceManager.GetString("Draw", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to An Error Occured.
         /// </summary>
         public static string ErrorOccured {

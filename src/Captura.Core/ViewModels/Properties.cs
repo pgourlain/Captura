@@ -141,6 +141,7 @@ namespace Captura.ViewModels
         #endregion
         
         #region Commands
+        public DelegateCommand DrawCommand { get; }
         public DelegateCommand ScreenShotCommand { get; }
 
         public DelegateCommand ScreenShotActiveCommand { get; }

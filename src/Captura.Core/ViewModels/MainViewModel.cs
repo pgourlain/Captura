@@ -15,6 +15,7 @@ using DesktopDuplication;
 using Microsoft.Win32;
 using Timer = System.Timers.Timer;
 using Window = Screna.Window;
+using System.Collections.Generic;
 
 namespace Captura.ViewModels
 {
@@ -72,6 +73,7 @@ namespace Captura.ViewModels
             });
             
             PauseCommand = new DelegateCommand(OnPauseExecute, false);
+            DrawCommand = new DelegateCommand(() => DrawOnScreen());
             #endregion
 
             SystemEvents.PowerModeChanged += SystemEvents_PowerModeChanged;
@@ -242,6 +244,7 @@ namespace Captura.ViewModels
             ServiceProvider.Register<Action>(ServiceName.ScreenShot, () => ScreenShotCommand.ExecuteIfCan());
             ServiceProvider.Register<Action>(ServiceName.ActiveScreenShot, () => SaveScreenShot(ScreenShotWindow(Window.ForegroundWindow)));
             ServiceProvider.Register<Action>(ServiceName.DesktopScreenShot, () => SaveScreenShot(ScreenShotWindow(Window.DesktopWindow)));
+            ServiceProvider.Register<Action>(ServiceName.Draw, () => DrawCommand.ExecuteIfCan());
 
             // Register Hotkeys if not console
             if (_hotkeys)
@@ -367,6 +370,12 @@ namespace Captura.ViewModels
                 }
                 else return bmp.Transform(true);
             }
+        }
+
+        private void DrawOnScreen()
+        {
+            //Show a window over Desktop
+            ServiceProvider.DrawingWindow.Show();
         }
 
         public async void CaptureScreenShot(string FileName = null)
