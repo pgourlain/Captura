@@ -4,7 +4,7 @@
 #define MyAppName "Captura"
 #define MyAppPublisher "Mathew Sachin"
 #define MyAppURL "https://MathewSachin.github.io/Captura"
-#define MyAppExeName "Captura.UI.exe"
+#define MyAppExeName "captura.exe"
 
 [Setup]
 AppId={{C1670C5E-5042-4300-9491-6BFFF963823F}
@@ -20,7 +20,7 @@ DisableProgramGroupPage=yes
 OutputBaseFilename=Captura-Setup
 Compression=lzma
 SolidCompression=yes
-SetupIconFile=src/Captura/Captura.ico
+SetupIconFile=src/Captura/Images/Captura.ico
 OutputDir=temp
 
 [Languages]
@@ -42,8 +42,12 @@ Name: "ukrainian"; MessagesFile: "compiler:Languages\Ukrainian.isl"
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
+; Remove Assemblies from previous installation to prevent conflicts
+[InstallDelete]
+Type: files; Name: "{app}\lib\*.dll"
+
 [Files]
-Source: "Output\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "dist\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Icons]
 Name: "{commonprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"

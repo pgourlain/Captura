@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using Captura;
 
 namespace Screna
 {
@@ -8,76 +9,63 @@ namespace Screna
     /// </summary>
     public class OverlayedImageProvider : IImageProvider
     {
-        readonly IOverlay[] _overlays;
-        readonly IImageProvider _imageProvider;
-        readonly Func<Point, Point> _transform;
+        IOverlay[] _overlays;
+        IImageProvider _imageProvider;
         
         /// <summary>
         /// Creates a new instance of <see cref="OverlayedImageProvider"/>.
         /// </summary>
         /// <param name="ImageProvider">The <see cref="IImageProvider"/> to apply the Overlays on.</param>
         /// <param name="Overlays">Array of <see cref="IOverlay"/>(s) to apply.</param>
-        /// <param name="Transform">Point Transform Function.</param>
-        public OverlayedImageProvider(IImageProvider ImageProvider, Func<Point, Point> Transform, params IOverlay[] Overlays)
+        public OverlayedImageProvider(IImageProvider ImageProvider, params IOverlay[] Overlays)
         {
-            _imageProvider = ImageProvider;
-            _overlays = Overlays;
-            _transform = Transform;
+            _imageProvider = ImageProvider ?? throw new ArgumentNullException(nameof(ImageProvider));
+            _overlays = Overlays ?? throw new ArgumentNullException(nameof(Overlays));
 
             Width = ImageProvider.Width;
             Height = ImageProvider.Height;
         }
 
-        int lastFrameHash;
-
-        /// <summary>
-        /// Captures an Image.
-        /// </summary>
-        public Bitmap Capture()
+        /// <inheritdoc />
+        public IEditableFrame Capture()
         {
             var bmp = _imageProvider.Capture();
             
-            var hash = bmp.GetHashCode();
-
-            if (lastFrameHash == hash)
+            // Overlays should have already been drawn on previous frame
+            if (bmp is RepeatFrame)
             {
                 return bmp;
             }
 
-            lastFrameHash = hash;
-
-            using (var g = Graphics.FromImage(bmp))
+            if (_overlays != null)
             {
-                if (_overlays != null)
-                    foreach (var overlay in _overlays)
-                        overlay?.Draw(g, _transform);
+                foreach (var overlay in _overlays)
+                    overlay?.Draw(bmp, _imageProvider.PointTransform);
             }
-
+            
             return bmp;
         }
         
-        /// <summary>
-        /// Height of Captured image.
-        /// </summary>
+        /// <inheritdoc />
         public int Height { get; }
 
-        /// <summary>
-        /// Width of Captured image.
-        /// </summary>
+        /// <inheritdoc />
         public int Width { get; }
 
-        /// <summary>
-        /// Frees all resources used by this instance.
-        /// </summary>
-        public virtual void Dispose()
+        public Func<Point, Point> PointTransform { get; } = P => P;
+
+        /// <inheritdoc />
+        public void Dispose()
         {
             _imageProvider.Dispose();
 
-            if (_overlays == null)
-                return;
-
             foreach (var overlay in _overlays)
                 overlay?.Dispose();
+
+            _imageProvider = null;
+            _overlays = null;
         }
+
+        public IBitmapFrame DummyFrame => _imageProvider.DummyFrame;
     }
 }

@@ -1,21 +1,23 @@
-# Captura
-[![Master Build Status](https://img.shields.io/appveyor/ci/MathewSachin/Captura/master.svg?style=flat-square)](https://ci.appveyor.com/project/MathewSachin/Captura)
-[![MIT License](https://img.shields.io/github/license/MathewSachin/Captura.svg?style=flat-square)](LICENSE.md)
-[![Chat](https://img.shields.io/gitter/room/MathewSachin/Screna.svg?style=flat-square)](https://gitter.im/MathewSachin/Screna)
-[![Downloads](https://img.shields.io/github/downloads/MathewSachin/Captura/total.svg?style=flat-square)](https://github.com/MathewSachin/Captura/releases)  
-&copy; [Copyright 2017](LICENSE.md) Mathew Sachin
+![Captura](https://mathewsachin.github.io/Captura/assets/Banner.png)
 
-:link: https://mathewsachin.github.io/Captura/
+[![Master Build Status](https://img.shields.io/appveyor/ci/MathewSachin/Captura/master.svg?style=flat-square&logo=appveyor)](https://ci.appveyor.com/project/MathewSachin/Captura)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE.md)
+[![Chat](https://img.shields.io/badge/chat-on_gitter-yellow.svg?style=flat-square&logo=gitter)](https://gitter.im/MathewSachin/Captura)
 
-Capture Screen, WebCam, Audio, Cursor, Mouse Clicks and Keystrokes using [Screna](https://github.com/MathewSachin/Screna).
+[![Downloads](https://img.shields.io/github/downloads/MathewSachin/Captura/total.svg?style=flat-square)](https://mathewsachin.github.io/Captura/download)
+[![PayPal Donate](https://img.shields.io/badge/donate-PayPal-orange.svg?style=flat-square&logo=paypal)](https://mathewsachin.github.io/Captura/donate)
+[![Crowdin](https://d322cqt584bo4o.cloudfront.net/captura/localized.svg)](https://crowdin.com/project/captura)
 
-See the [Wiki](https://github.com/MathewSachin/Captura/wiki) for more information!
+&copy; [Copyright 2019](LICENSE.md) Mathew Sachin
 
-![ScreenShot](http://i.imgur.com/syPGnSd.png)
+:link: <https://mathewsachin.github.io/Captura/>
 
-[See more ScreenShots](https://github.com/MathewSachin/Captura/wiki/ScreenShots/)
+Capture Screen, WebCam, Audio, Cursor, Mouse Clicks and Keystrokes.
 
-# Features
+<a href="docs/Screenshots"><img src="https://mathewsachin.github.io/Captura/assets/ScreenShots/Home.png" style="max-width: 200px"></a>
+
+## Features
+
 - Take ScreenShots
 - Capture ScreenCasts (Avi/Gif/Mp4)
 - Capture with/without Mouse Cursor
@@ -23,18 +25,37 @@ See the [Wiki](https://github.com/MathewSachin/Captura/wiki) for more informatio
 - Capture Mouse Clicks or Keystrokes
 - Mix Audio recorded from Microphone and Speaker Output
 - Capture from WebCam.
-- Can be used from [Command-line](https://github.com/MathewSachin/Captura/wiki/Command-line).
+- Can be used from [Command-line](https://mathewsachin.github.io/Captura/cmdline) (*BETA*).
+- Available in [multiple languages](https://mathewsachin.github.io/Captura/translation)
+- Configurable [Hotkeys](https://mathewsachin.github.io/Captura/hotkeys)
 
-## Available on Chocolatey
-```
+## Installation
+
+[latest]: https://github.com/MathewSachin/Captura/releases/latest
+
+Portable and Setup builds for the latest release can be downloaded from [here][latest].
+
+### Chocolatey
+
+```powershell
 choco install captura -y
 ```
 
-# Build Notes
-- [Visual Studio 2017](https://visualstudio.com) or greater is recommended. Can also be built using Visual Studio 2015 using [Microsoft.Net.Compilers](https://www.nuget.org/packages/Microsoft.Net.Compilers) nuget package to support compilation of C# 7.
-- .Net Framework v4.6.1 is required.
-- For more info, see [Building](https://github.com/MathewSachin/Captura/wiki/Building).
+### Dev Builds
 
----
+See the [Continuous Integration page](docs/CI.md).
 
-See the [Wiki](https://github.com/MathewSachin/Captura/wiki) for more information!
+## Docs
+[Build Notes](docs/Build.md) | [System Requirements](docs/System-Requirements.md) | [Contributing](CONTRIBUTING.md)
+
+[ScreenShots](docs/Screenshots) | [Command-line](docs/Cmdline/README.md) | [Hotkeys](https://mathewsachin.github.io/Captura/hotkeys)
+
+[FAQ](docs/FAQ.md) | [Code of Conduct](CODE_OF_CONDUCT.md) | [Changelog](docs/Changelogs/README.md)
+
+[Continuous Integration](docs/CI.md) | [FFmpeg](docs/FFmpeg.md)
+
+## License
+
+[MIT License](LICENSE.md)
+
+Check [here](licenses/) for licenses of dependencies.
